@@ -29,10 +29,14 @@ export default {
                 preco: this.preco
             }
             this.sequencia++
-            // eslint-disable-next-line
-            console.log(produto)
-        }
+            // ALTERA O ESTADO CENTRAL DA APLICAÇÃO
+            this.$store.state.produtos.push(produto) // produto que acabeu de criar na linha 25
+            // entao da mesma forma que usei pra ler os produtos (this.$store.state.produtos.)
+            // tambem uso o push que pega a referencia que é compartilhada na minha aplicação e 
+            //colocando dentro do produto que está compartilhado lá na store, que é o
+            //this.$store.state.produtos
     }
+}
 }
 </script>
 
@@ -50,4 +54,4 @@ export default {
         font-size: 2rem;
         width: 90px;
     }
-</style>
+</style>    
