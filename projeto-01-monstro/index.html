@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<!--
+    A primeira parte a se fazer é o panel scores, que á barra de vida tanto do jogador quanto do monstro
+    Depois a classe scores, div da barra de vida e div da vida
+    Após isso duplicar e fazer o do monstro
+    Cuidar do CSS
+    amarrar estilos (implementar o painel das pontuações)
+    Verificar função de resultado
+    Configurar os botoes
+    gerar Lógica para mostrar ou nao certos botoes no meio do jogo
+    ver a lógica de mostrar/ocultar o botão na hora certa
+    ver a lógica para chamar a função de iniciar jogo e desistir
+    implementa os valores de ataque
+    implementa a proteção de cálculo da vida
+    ver a lógica de mostrar/ocultar o botão na hora certa
+    ver lógica de parar o jogo após o fim
+    Implementar a lógica de cura
+-->
+<body>
+    <div id="app">
+        <div class="panel scores">
+        <div class="score">
+            <h1>Jogador</h1>
+            <div class="life-bar">
+                <div class="life"
+                :class="{danger: playerLife < 20}"
+                :style="{width: playerLife + '%'}"></div> <!--vida interna, acompanha o percentual de acordo com a barra de progresso-->
+            </div>
+            <div>{{ playerLife }} %</div>
+        </div>
+        <div class="score">
+            <h1>Monstro</h1>
+            <div class="life-bar">
+                <div class="life"
+                :class="{danger: monsterLife < 20}"
+                :style="{width: monsterLife + '%'}"></div> <!--vida interna-->
+            </div>
+            <div>{{ monsterLife }} %</div>
+        </div>
+    </div>
+        <div v-if="hasResult" class="panel result">
+            <div v-if="monsterLife == 0" class="win">Você ganhou </div>
+            <div v-else class="lose">Você perdeu </div>
+        </div>
+        <div class="panel buttons">
+            <!--quando o jogo estiver executando deve-se exibir os 4 primeiros botoes e apenas o ultimo nao,
+            para se fazer isso usa-se a tag template-->
+            <template v-if="running"> <!--monitorar a variavel running!!, chama a função atk passando parametro-->
+                    <button @click="attack(false)"
+                     class="btn attack">Ataque</button>
+                    <button @click="attack(true)"
+                    class="btn special-attack">Ataque Especial</button>
+                    <button @click="healAndHurt"
+                        class="btn heal">Curar</button>
+                    <button @click="running = false"
+                    class="btn give-up">Desistir</button>
+            </template> <!--se running, se não,  observar o @click que dispara a func-->
+            <button v-else @click="startGame"
+                class="btn new-game">Iniciar Jogo</button>
+        </div> <!--a div só deve ser exibida se tiver elementos do array entao deve-se por um se log.lenght, se for 0 n exibe se >0 exibe-->
+        <div v-if="logs.lenght" 
+        class="panel logs"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

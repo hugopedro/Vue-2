@@ -1,0 +1,111 @@
+/* Geral */
+
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel {
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Areas dos pontos */
+
+.scores { /*é o score principal */
+    display: flex;
+}
+     
+.score { /*são os sub-score */
+    flex: 1; /*para ocupar a tela inteira, assim cada div(jogador e monstro) ocupa metade da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* é importante centralizar*/
+    align-items: center;
+}
+
+.score h1 {
+    font-weight: 300; 
+    font-size: 1.6rem;
+}
+
+.life-bar {
+    width: 80%; /*80% da area presente */
+    height: 20px;
+    border: 1px solid #AAA;
+}
+
+.life-bar .life { /*tem que ser a mesma estrutura no html, ou seja life deve ser "filho" de life-bar */
+    display: flex;
+    justify-content: center;
+    height: 100%; /*altura*/
+     /*width: 100%; (Largura nao será necessaria pois o Vue.Js controlará a largura)*/
+    background-color: green;
+}   
+
+.life-bar .life.danger {
+    background-color: red;
+}   
+
+/*Área do resultado */
+
+.result {
+    display: flex;
+    justify-content: center; /*centraliza o resultado*/
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.result .win {
+    color: green;
+}
+
+.result .lose {
+    color: red;
+}
+
+
+/*Area dos botoes(controle do jogo)*/
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.new-game {
+    background-color: #4253af;
+    color: #fff;
+}
+
+.attack {
+    background-color: red;
+    color: #fff;
+}
+
+.special-attack {
+    background-color: orange;
+    color: black;
+}
+
+.heal {
+    background-color: green;
+    color: white;
+}
+
+.give-up {
+    background-color: #BBB;
+    color: black; 
+}

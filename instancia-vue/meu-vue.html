@@ -1,0 +1,47 @@
+<meta charset="UTF-8">
+
+<div class="app">
+    {{ nome }} {{ sobrenome }} {{ i + 1 }}
+</div>
+
+
+<script>
+    function MeuVue(params) {
+        this.$el = document.querySelector(params.el)
+        this.$data = params.data
+
+        for(let atr in this.$data) {
+            Object.defineProperty(this, atr, {
+                get: () => {
+                    return $this.$data[atr]
+                },
+                set: value=> {
+                    $this.$data[atr] = value
+                }
+            })
+        }
+    }
+
+    //interpolar
+
+    const reget = /\{\{([\s])}}
+
+    const vm = new MeuVue({
+        el: '#app',
+        data: {
+            nome: 'Maria',
+            sobrenome: 'Silva'
+        }
+    })
+
+    console.log(vm.nome)
+    console.log(vm.$data.nome) //local original que a var ta armazenada
+
+    vm.nome = 'Pedro'
+    console.log(vm.nome)
+    console.log(vm.$data.nome)
+
+    // vm.$data.idade = 31
+    // console.log(vm.$data.idade)
+
+</script>

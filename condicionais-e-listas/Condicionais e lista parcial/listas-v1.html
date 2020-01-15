@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+
+            <!--47. Acessando lista com v-for -->
+
+
+<div id="app">
+    <ul> <!-- ul é lista nao ordenada--> <!--li é cada um dos elementos-->
+        <li v-for="cor in cores">{{ cor }}</li> <!--cor é uma variavel que se cria, pode ser qualquer nome-->
+        <!-- maneira comum:
+        <li>vermelho</li> 
+        <li>verde</li>
+        <li>amarelo</li>
+        <li>azul</li> -->
+
+        <!--
+            pode-se adicionar mais tags se necessário, exemplo um bind teste etc:
+            <li v-for="cor in cores" :teste='cor'>{{ cor }}</li>
+        -->
+    </ul>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [
+                { nome: 'Ana', idade: 26, peso:59 },
+                { nome: 'Guilherme', idade: 22, peso:89 }
+            ]
+        }
+    })
+</script>

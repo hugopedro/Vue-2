@@ -1,0 +1,64 @@
+<script src="https://unpkg.com/vue"></script>
+
+<style>
+
+    .caixas {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    /*o vue.js nao aceita traço no nome de um atributo, então só será possível usar se utilizar aspas simples */
+    .c1 {
+        background-color: red;
+    }
+    .cor-2 {
+        background-color: green;
+    }
+    .c3 {
+        background-color: blue; 
+    }
+
+    .girar {
+        transform: rotate(45deg);
+    }
+
+</style>
+
+<div id="app"> <!--: é v-bind e @ é v-on--> <!--usando aspas simples pra nao travar-->
+    <div class="caixas">
+        <!--ali no v-bind nao pode por {{}} se nao vai bugar!!-->
+        <div class="demo" :class="estilo1"
+        @click="aplicarC1 = !aplicarC1"></div> <!--^ aqui ele ta aplicando uma troca  de cor ao clicar
+        porem vai deixar o template "carregado", entao  deve-se criar uma propiedade computed-->
+        <div class="demo"></div> <!-- pode por array no v-bind (:)-->
+        <div class="demo girar" :class="[classeCSS, {girar: aplicarGirar}]"></div>
+    </div>
+    <hr>
+    <input type="text" v-model="classeCSS">
+</div>
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            aplicarC1: false,
+            classeCSS: 'c1',
+            aplicarGirar: true
+        },
+        computed: {
+            estilo1() { //this pra acessar o atributo de data
+                return {
+                c1: this.aplicarC1,
+                'cor-2': !this.aplicarC1,
+                }
+            }
+        }
+    })
+</script>

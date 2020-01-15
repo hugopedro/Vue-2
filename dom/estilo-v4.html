@@ -1,0 +1,63 @@
+<script src="https://unpkg.com/vue"></script>
+<!--ESTILO DINAMICO SEM CLASSE CSS-->
+<style>
+
+    .caixas {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    /*o vue.js nao aceita traço no nome de um atributo, então só será possível usar se utilizar aspas simples */
+    .c1 {
+        background-color: red;
+    }
+    .cor-2 {
+        background-color: green;
+    }
+    .c3 {
+        background-color: blue; 
+    }
+
+    .girar {
+        transform: rotate(45deg);
+    }
+
+</style>
+
+<div id="app"> <!--: é v-bind e @ é v-on--> <!--usando aspas simples pra nao travar-->
+    <div class="caixas">
+        <div class="demo" :style="{backgroundColor: cor}"></div>  <!--jeito 1 de alterar-->
+        <div class="demo" :style="[meuEstilo, {height: altura}]"></div>  <!--jeito 2, o melhorzinho (computed)
+        dentro de um array se for varias coisas!!!-->
+        <!--tem que por as chaves porque não está dentro do contexto de um objeto, ou seja pertencente a algo sem ser data-->
+        <div class="demo"></div>
+    </div>
+    <hr>
+    <input type="text" v-model="cor">
+    <input type="text" v-model="largura">
+</div>
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            cor: 'red',
+            largura: 100,
+            altura: 20
+        },
+        computed: {
+            meuEstilo() {
+                return {
+                    backgroundColor: this.cor,
+                    width: this.largura + 'px'}
+                }
+            }
+    })
+</script>

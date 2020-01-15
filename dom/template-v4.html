@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+ <div id="app">
+     <p>{{ titulo }}</p>
+     <p>{{ saudacao() }}</p> <!--já que é um método deve-se por () tambem-->
+     <a v-bind:href="link">Google</a> <!--o v-bind:href serve para fazer a ligação entre algo que está na 
+    vue instance e um atributo da sua tag dentro do template, e nao precisa de chaves {{}}!!-->
+ </div>
+
+ <script>
+ 
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS!',
+            link: 'http://google.com.br'
+        },
+        methods: {
+            saudacao: function() {
+                return this.titulo //o this dá direito a acessar atributos de fora
+            }
+        }
+    })
+ </script>

@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+ <div id="app">
+     <p>{{ titulo }}</p>
+     <p>{{ saudacao() }}</p> <!--já que é um método deve-se por () tambem-->
+ </div>
+
+ <script>
+ 
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS!'
+        },
+        methods: {
+            saudacao: function() {
+                return this.titulo //o this dá direito a acessar atributos de fora
+            }
+        }
+    })
+ </script>

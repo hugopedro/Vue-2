@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+ <div id="app">
+     <p>{{ contador }}</p> <!--se aqui fosse v-once nao ia atualizar!-->
+     <!--v-on é a diretiva que vai ficar escutando o evento que vem logo na sequencia-->
+     <!-- v-on:nomeDoEventoDisparado="Funcao que passou no valor"-->
+
+     <!--para passar nossos próprios argumentos com eventos poe um parametro e monta o this, e é só por aqui 
+    no momento que se poe um parâmetro específico o evento não é mais passado por padrão
+
+    para passar o parâmetro e o evento juntos, deve-se por no parâmetro exatamente assim no html: $event
+    e na parte do vue poe event no parametro, apesar que no vue o nome do parametro pode ser oque quiser-->
+
+    <!-- e pode trocar a ordem do parametro, mas muda na parte do vue tambem-->
+     <button v-on:click="somar(5, $event)">Somar 1</button>
+     <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}</p>
+ </div>
+
+ <script>
+ 
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            somar(passo,ev) {
+                this.contador+= passo
+            },
+            //CAPTURA O EVENTO DO MOUSE
+            atualizarXY(event) {
+                this.x = event.clientX
+                this.y = event.clientY
+            }
+        }
+    })
+ </script>

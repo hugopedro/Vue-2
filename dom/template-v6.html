@@ -1,0 +1,37 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+ <div id="app">
+     <p v-once>{{ titulo }}</p>
+     <p>{{ saudacao() }}</p> <!--já que é um método deve-se por () tambem-->
+     <a v-bind:href="link">Google</a> <!--o v-bind:href serve para fazer a ligação entre algo que está na 
+    vue instance e um atributo da sua tag dentro do template, e nao precisa de chaves {{}}!!-->
+    <hr>
+    <p v-html="linkHtml"></p> <!--A diretiva v-html serve para  trazer segurança na hora de referenciar um link!!
+    e nao precisa de chaves {{}}-->
+ </div>
+
+ <script>
+ /* Evitando Re-renderização:
+    
+    definiu-se o valor de um atributo pela primeira vez, em seguida esse valor é modificado, a re-renderização
+    faz com que o ultimo valor modificado sobrescreva todos, portanto usa-se v-once para os valores anteriores
+    a modificação aparecerem tambem (exemplo linha 4)
+
+    Ou seja: sempre que tiver um texto html que nao precisa ser atualizado deve-se usar a diretiva v-once
+ 
+ */
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS!',
+            link: 'http://google.com.br',
+            linkHtml: '<a href="http://google.com.br">Google</a>'
+        },
+        methods: {
+            saudacao: function() {
+                this.titulo = 'Bom dia!'
+                return this.titulo //o this dá direito a acessar atributos de fora
+            }
+        }
+    })
+ </script>

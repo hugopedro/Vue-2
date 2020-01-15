@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+ <div id="app">
+     <p>{{ contador }}</p> <!--se aqui fosse v-once nao ia atualizar!-->
+     <!--v-on é a diretiva que vai ficar escutando o evento que vem logo na sequencia-->
+     <!-- v-on:nomeDoEventoDisparado="Funcao que passou no valor"-->
+     <button @click="somar">Somar 1</button>
+     <hr>
+     <input type="text" :value="contador">
+ </div>
+
+ <script>
+ 
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0
+        },
+        methods: {
+            somar() {
+                this.contador++
+            }
+        }
+    })  
+ </script>
+
+ <!--v-on será @ e v-bind é só :-->
