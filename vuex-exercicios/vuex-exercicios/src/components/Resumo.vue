@@ -9,15 +9,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-    computed: {
-        total() {
-            return this.$store.getters.valorTotal
-        },
-        produtos() { //cuidado , o $ não é no this e sim no primeiro após o this.
-            return this.$store.state.produtos
-        }
-    }
+    computed: mapGetters({
+        total: 'valorTotal' // tem q colocar entre aspas pra acessar o getter e vai mapear pra variavel total
+    })
+    //metodo 2: computed: mapGetters(['valorTotal'])
+    // computed: {
+    //     total() {
+    //         return this.$store.getters.valorTotal
+    //     }
+    // }
 }
 </script>
 
