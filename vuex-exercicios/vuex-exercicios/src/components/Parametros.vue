@@ -15,10 +15,22 @@
 
 <script>
 export default {
-    data() {
-        return {
-            quantidade: 0,
-            preco: 0
+    computed: { //desse jeito a propiedade computada pode alterar e ler
+        quantidade: { //porem é uma gambiarra pois alterações devem ser feitas em data
+            get() {
+                return this.$store.state.quantidade
+            },
+            set(valor) {
+                this.$store.commit('setQuantidade', valor)
+            }
+        },
+        preco: {
+            get () {
+                return this.$store.state.preco
+            },
+            set (valor) {
+                this.$store.commit('setPreco', valor)
+            }
         }
     }
 }

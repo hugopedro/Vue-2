@@ -17,10 +17,16 @@ import  {mapActions } from 'vuex'
 export default {
     data() {
         return {
-            sequencia: 1,
-            quantidade: 1,
-            preco: 9.99,
+            sequencia: 1
         }
+    },
+    computed: {
+        quantidade() {
+            return this.$store.state.quantidade
+        },
+        preco() {
+            return this.$store.state.preco
+        } //após criar as unidades computadas deve-se remover as propiedades iguais em data para n dar conflito
     },
     methods: {
         //getters são colocados dentro de propiedades computadas, e setters dentro dos métodos!

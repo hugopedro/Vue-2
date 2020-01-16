@@ -7,7 +7,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        produtos: []
+        produtos: [],
+        quantidade: 2,
+        preco: 19.99
     },
     getters: {
         valorTotal(state) {
@@ -20,6 +22,12 @@ export default new Vuex.Store({
     mutations: { //payload é uma convenção de nome pra passar um dado adicional
         adicionarProduto(state, payload) {
             state.produtos.push(payload)//usarei o commit pra chamar o mutation em loja.vue
+        },
+        setQuantidade(state, payload) {
+            state.quantidade = payload
+        },
+        setPreco(state, payload) {
+            state.preco = payload
         }
     },
     actions: { // O objetivo da action não é alterar o estado, portanto recebe context que é uma
