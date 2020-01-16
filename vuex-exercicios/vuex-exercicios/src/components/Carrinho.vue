@@ -26,11 +26,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    computed: {
-        total() {
-            return this.$store.getters.valorTotal
-        },
+    computed: { // como o método computado tem mais de 1 propiedade(no caso produtos) usa-se o spread (...)
+        ...mapGetters({
+            total: 'valorTotal'
+        }),
+        // total() {
+        //     return this.$store.getters.valorTotal
+        // },
         produtos() { //cuidado , o $ não é no this e sim no primeiro após o this.
             return this.$store.state.produtos
         }

@@ -12,6 +12,8 @@
 
 <script>
 
+import  {mapMutations } from 'vuex'
+
 export default {
     data() {
         return {
@@ -21,6 +23,8 @@ export default {
         }
     },
     methods: {
+        //getters são colocados dentro de propiedades computadas, e setters dentro dos métodos!
+        ...mapMutations(['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
         adicionar() {
             const produto = {
                 id: this.sequencia,
@@ -28,13 +32,17 @@ export default {
                 quantidade: this.quantidade,
                 preco: this.preco
             }
-            this.sequencia++
+            // this.sequencia++
             // ALTERA O ESTADO CENTRAL DA APLICAÇÃO
-            this.$store.state.produtos.push(produto) // produto que acabeu de criar na linha 25
+            //this.$store.state.produtos.push(produto) // produto que acabeu de criar na linha 25, se usar isso junto com o payload vai dar pau
             // entao da mesma forma que usei pra ler os produtos (this.$store.state.produtos.)
             // tambem uso o push que pega a referencia que é compartilhada na minha aplicação e 
             //colocando dentro do produto que está compartilhado lá na store, que é o
             //this.$store.state.produtos
+
+            //this.$store.commit('adicionarProduto', produto) //passa-se o nome da mutation no parâmetro, e receberá
+            // um payload que é o produto que acabei de calcular na função adicionar... const produto etc
+            this.adicionarProduto(produto) // então estou usando isso pois fiz um mapeamento da mutation na linha 27
     }
 }
 }
