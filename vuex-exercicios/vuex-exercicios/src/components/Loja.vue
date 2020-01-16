@@ -40,8 +40,7 @@ export default {
         
         
         */ //carrinho porque tem que falar a namespace que se refere
-        // mas se mapear a raiz lá no carrinho.js não precisa!
-        ...mapActions(['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
+        ...mapActions('carrinho',['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
         adicionar() {
             const produto = {
                 id: this.sequencia,
