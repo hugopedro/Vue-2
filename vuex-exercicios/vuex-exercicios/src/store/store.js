@@ -21,5 +21,14 @@ export default new Vuex.Store({
         adicionarProduto(state, payload) {
             state.produtos.push(payload)//usarei o commit pra chamar o mutation em loja.vue
         }
+    },
+    actions: { // O objetivo da action não é alterar o estado, portanto recebe context que é uma
+        // espécie de this, apartir desse contexto é possível chamar a função commit
+        // em actions que se pode usar AJAX, em mutations nunca.
+        adicionarProduto(context, payload) {
+            setTimeout(() => {
+                context.commit('adicionarProduto', payload)
+            }, 1000)
+        }
     }
 })

@@ -12,7 +12,7 @@
 
 <script>
 
-import  {mapMutations } from 'vuex'
+import  {mapActions } from 'vuex'
 
 export default {
     data() {
@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         //getters são colocados dentro de propiedades computadas, e setters dentro dos métodos!
-        ...mapMutations(['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
+        ...mapActions(['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
         adicionar() {
             const produto = {
                 id: this.sequencia,
