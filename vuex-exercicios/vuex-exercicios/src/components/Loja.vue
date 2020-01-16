@@ -60,6 +60,9 @@ export default {
             // um payload que é o produto que acabei de calcular na função adicionar... const produto etc
             //this.$store.dispatch('adicionarProduto', produto) //nome da action, e o payload
             this.adicionarProduto(produto) // então estou usando isso pois fiz um mapeamento da mutation na linha 27
+
+            console.log(this.$store.getters.getNome) //getNome nao é uma funcao e sim um atributo 
+            console.log(this.$store.getters.getNomeCompleto) //getNomeCompleto nao é uma funcao e sim um atributo 
     }
 }
 }
