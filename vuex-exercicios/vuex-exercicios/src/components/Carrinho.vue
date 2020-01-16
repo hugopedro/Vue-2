@@ -36,7 +36,7 @@ export default {
         //     return this.$store.getters.valorTotal
         // },
         produtos() { //cuidado , o $ não é no this e sim no primeiro após o this.
-            return this.$store.state.produtos
+            return this.$store.state.carrinho.produtos
         }
     }
 }

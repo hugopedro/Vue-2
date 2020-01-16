@@ -22,10 +22,10 @@ export default {
     },
     computed: {
         quantidade() {
-            return this.$store.state.quantidade
+            return this.$store.state.parametros.quantidade
         },
         preco() {
-            return this.$store.state.preco
+            return this.$store.state.parametros.preco
         } //após criar as unidades computadas deve-se remover as propiedades iguais em data para n dar conflito
     },
     methods: {

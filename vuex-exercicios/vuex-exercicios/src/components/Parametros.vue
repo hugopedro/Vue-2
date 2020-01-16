@@ -18,7 +18,7 @@ export default {
     computed: { //desse jeito a propiedade computada pode alterar e ler
         quantidade: { //porem é uma gambiarra pois alterações devem ser feitas em data
             get() {
-                return this.$store.state.quantidade
+                return this.$store.state.parametros.quantidade
             },
             set(valor) {
                 this.$store.commit('setQuantidade', valor)
@@ -26,7 +26,7 @@ export default {
         },
         preco: {
             get () {
-                return this.$store.state.preco
+                return this.$store.state.parametros.preco
             },
             set (valor) {
                 this.$store.commit('setPreco', valor)
