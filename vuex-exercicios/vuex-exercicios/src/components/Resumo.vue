@@ -11,8 +11,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-export default {
-    computed: mapGetters({
+export default { //carrinho porque ta pegando a namespace
+    computed: mapGetters('carrinho', {
         total: 'valorTotal' // tem q colocar entre aspas pra acessar o getter e vai mapear pra variavel total
     })
     //metodo 2: computed: mapGetters(['valorTotal'])

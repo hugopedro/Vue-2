@@ -29,7 +29,7 @@
 import { mapGetters } from 'vuex'
 export default {
     computed: { // como o método computado tem mais de 1 propiedade(no caso produtos) usa-se o spread (...)
-        ...mapGetters({
+        ...mapGetters('carrinho', { //carrinho porque ta pegando a namespace
             total: 'valorTotal'
         }),
         // total() {
