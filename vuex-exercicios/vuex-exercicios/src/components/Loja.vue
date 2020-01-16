@@ -24,6 +24,16 @@ export default {
     },
     methods: {
         //getters são colocados dentro de propiedades computadas, e setters dentro dos métodos!
+        //entao para recaptular o ...mapActions cria automaticamente uma função adicionarProduto, e essa função entro dela só faz fazer o dispatch, então o que ele faz é nada mais que isso:
+
+        /* 
+        
+        adicionarProduto(produto) {
+            this.$store.dispatch('adicionarProduto', produto)
+        },
+        
+        
+        */
         ...mapActions(['adicionarProduto']), //colocando a reticências(operador spread) o resultado será gerado dentro do método (aqui)
         adicionar() {
             const produto = {
