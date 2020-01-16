@@ -42,8 +42,8 @@ export default {
 
             //this.$store.commit('adicionarProduto', produto) //passa-se o nome da mutation no parâmetro, e receberá
             // um payload que é o produto que acabei de calcular na função adicionar... const produto etc
-            //this.adicionarProduto(produto) // então estou usando isso pois fiz um mapeamento da mutation na linha 27
-            this.$store.dispatch('adicionarProduto', produto) //nome da action, e o payload
+            //this.$store.dispatch('adicionarProduto', produto) //nome da action, e o payload
+            this.adicionarProduto(produto) // então estou usando isso pois fiz um mapeamento da mutation na linha 27
     }
 }
 }

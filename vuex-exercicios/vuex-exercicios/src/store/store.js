@@ -25,9 +25,9 @@ export default new Vuex.Store({
     actions: { // O objetivo da action não é alterar o estado, portanto recebe context que é uma
         // espécie de this, apartir desse contexto é possível chamar a função commit
         // em actions que se pode usar AJAX, em mutations nunca.
-        adicionarProduto(context, payload) {
+        adicionarProduto({ commit }, payload) { // esse { commit } é um operador de desestruturação do ECMAScript, assim expoe o método pra fora do objeto e ai não precisa mais acessar objeto.nome do método, faz direto já
             setTimeout(() => {
-                context.commit('adicionarProduto', payload)
+                commit('adicionarProduto', payload)
             }, 1000)
         }
     }
